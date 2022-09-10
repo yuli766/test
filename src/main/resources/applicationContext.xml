@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean class="pojo.Book" id="book">
+        <constructor-arg index="0" value="1" />
+        <constructor-arg index="1" value="JAVA从入门到入土" />
+        <constructor-arg index="2" value="114514" />
+    </bean>
+    <bean class="dao.BookDaoImpl" id="bookDao">
+
+    </bean>
+    <bean class="service.BookServiceImpl" id="bookService1">
+        <constructor-arg ref="bookDao" />
+        <constructor-arg value="构造方法注入" />
+    </bean>
+    <bean class="service.BookServiceImpl" id="bookService2">
+        <property name="bookDao" ref="bookDao" />
+        <property name="out" value="setter方法注入" />
+    </bean>
+</beans>
